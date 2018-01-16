@@ -4,4 +4,24 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>GameServlet</servlet-name>
+  	<display-name>GameServlet</display-name>
+  	<description></description>
+  	<servlet-class>servlets.GameServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ConsoleServlet</servlet-name>
+  	<display-name>ConsoleServlet</display-name>
+  	<description></description>
+  	<servlet-class>servlets.ConsoleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>GameServlet</servlet-name>
+  	<url-pattern>/GameServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ConsoleServlet</servlet-name>
+  	<url-pattern>/ConsoleServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

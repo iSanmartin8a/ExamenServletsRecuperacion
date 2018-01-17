@@ -3,20 +3,21 @@ package services;
 import javax.servlet.http.HttpServletRequest;
 
 import assemblers.GameAssembler;
+import connections.ConnectionManager;
 import models.Game;
 
 public class GameService implements Service{
 	
 	GameAssembler assembler = new GameAssembler();
-	private ConnectionManager manager = new ConnectionH2();
+	private ConnectionManager manager = new ConnectionManager();
 
 	public void createNewGameFromRequest(HttpServletRequest req) {
 		Game game = assembler.createGameFromRequest(req);
 
-		if (!getManager().search(videogame).isPresent()) {
-			getManager().insert(videogame);
+		if (!getManager().search(game).isPresent()) {
+			getManager().insert(game);
 		} else {
-			getManager().update(videogame);
+			getManager().update(game);
 		}
 	}
 

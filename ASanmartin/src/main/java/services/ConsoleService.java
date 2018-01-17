@@ -3,12 +3,14 @@ package services;
 import javax.servlet.http.HttpServletRequest;
 
 import assemblers.ConsoleAssembler;
+import connections.ConnectionManager;
+import connections.H2Connection;
 import models.Console;
 
 public class ConsoleService implements Service{
 	
 	ConsoleAssembler assembler = new ConsoleAssembler();
-	private ConnectionManager manager = new ConnectionH2();
+	private ConnectionManager manager = new ConnectionManager();
 
 	public void createNewConsoleFromRequest(HttpServletRequest req) {
 		Console console = assembler.createConsoleFromRequest(req);

@@ -7,12 +7,12 @@ import models.Game;
 
 public class GameAssembler {
 	
-	public Game createGameFromRequest(HttpServletRequest request) {
+	public static Game assembleGameForm(HttpServletRequest request) {
 
 		Game game = new Game();
 		game.setTitle(request.getParameter("title"));
 		game.setAge(request.getParameter("age"));
-		game.setReleaseDate((Date) request.getAttribute("releaseDate"));
+		game.setReleaseDate(request.getParameter("releaseDate"));
 		return game;
 	}
 

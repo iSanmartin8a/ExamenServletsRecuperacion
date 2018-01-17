@@ -1,35 +1,44 @@
 package services;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import assemblers.ConsoleAssembler;
 import connections.ConnectionManager;
 import connections.H2Connection;
 import models.Console;
+import repositories.ConsolesRepository;
 
 public class ConsoleService implements Service{
 	
-	ConsoleAssembler assembler = new ConsoleAssembler();
-	private ConnectionManager manager = new ConnectionManager();
+	private ConsolesRepository repository = new ConsolesRepository();
 
 	public void createNewConsoleFromRequest(HttpServletRequest req) {
-		Console console = assembler.createConsoleFromRequest(req);
+		Console console = ConsoleAssembler.assembleConsoleFrom(req);
+		insertOrUpdate(console);
+	}
 
-		if (!getManager().search(console).isPresent()) {
-			getManager().insert(console);
+	public void insertOrUpdate(Console consoleFrom) {
+		Console consoleInDatabase = repository.search(consoleFrom);
+		if (null == consoleInDatabase) {
+			repository.insert(consoleFrom);
 		} else {
-			getManager().update(console);
+			repository.update(consoleFrom);
 		}
 	}
 
-	public ConnectionManager getManager() {
-		return manager;
+	public List<Console> listAllConsoles(){
+		return repository.searchAll();
+		
+	}
+	
+	public ConsolesRepository getRepository() {
+		return repository;
 	}
 
-
-	public void createNewVideogameFromRequest(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-		
+	public void setRepository(ConsolesRepository repository) {
+		this.repository = repository;
 	}
 
 }

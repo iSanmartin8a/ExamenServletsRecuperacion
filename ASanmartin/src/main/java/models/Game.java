@@ -1,5 +1,7 @@
 package models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Game {
@@ -33,8 +35,14 @@ public class Game {
 	}
 	
 	public void setReleaseDate2(String releaseDate2) {
-		Date.parse(releaseDate2);
-		this.releaseDate = releaseDate2;
+		SimpleDateFormat textFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		try {
+			date = textFormat.parse(releaseDate2);
+		}catch(ParseException ex){
+			ex.printStackTrace();
+		}
+		this.releaseDate = date;
 	}
 
 }

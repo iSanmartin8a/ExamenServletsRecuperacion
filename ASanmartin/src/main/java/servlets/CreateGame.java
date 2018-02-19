@@ -1,39 +1,42 @@
 package servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Console;
+import models.Game;
+import services.ConsoleService;
+import services.GameService;
 
 /**
  * Servlet implementation class GameServlet
  */
-public class GameServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GameServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+public class CreateGame extends HttpServlet{
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	private GameService service = new GameService();
+
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Game game = service.assembleUserFromRequest(req);
+		service.createNewVideoGameFromRequest(game);
+		redirect(req,resp);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void redirect(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CreateVideogame.jsp");
+		dispatcher.forward(req,resp);
+	}
+
+	public GameService getService() {
+		return service;
+	}
+
+	public void setVideogameService(GameService service) {
+		this.service = service;
 	}
 
 }

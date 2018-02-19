@@ -1,33 +1,68 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
 
   <display-name>Archetype Created Web Application</display-name>
   
   <servlet>
-  	<servlet-name>GameServlet</servlet-name>
-  	<display-name>GameServlet</display-name>
-  	<description></description>
-  	<servlet-class>servlets.GameServlet</servlet-class>
-  </servlet>
-  
-  <servlet>
-  	<servlet-name>ConsoleServlet</servlet-name>
-  	<display-name>ConsoleServlet</display-name>
-  	<description></description>
-  	<servlet-class>servlets.ConsoleServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>GameServlet</servlet-name>
-  	<url-pattern>/GameServlet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  	<servlet-name>ConsoleServlet</servlet-name>
-  	<url-pattern>/ConsoleServlet</url-pattern>
-  </servlet-mapping>
+        <servlet-name>CreateConsole</servlet-name>
+        <servlet-class>es.salesianos.servlet.CreateConsole</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateConsole</servlet-name>
+        <url-pattern>AddConsoles</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    
+    <servlet-name>ListConsole</servlet-name>
+        <servlet-class>es.salesianos.servlet.ListConsole</servlet-class>
+    </servlet>
+
+	<servlet-mapping>
+        <servlet-name>ListConsole</servlet-name>
+        <url-pattern>ListConsole</url-pattern>
+    </servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteConsole</servlet-name>
+		<servlet-class>es.salesianos.servlet.DeleteConsole</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DeleteConsole</servlet-name>
+		<url-pattern>deleteConsole</url-pattern>
+	</servlet-mapping>
+	
+	   <servlet>
+        <servlet-name>CreateVideogame</servlet-name>
+        <servlet-class>es.salesianos.servlet.CreateVideogame</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateVideogame</servlet-name>
+        <url-pattern>CreateVideogame</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ListVideogame</servlet-name>
+        <servlet-class>es.salesianos.servlet.ListVideogame</servlet-class>
+    </servlet>
+
+	<servlet-mapping>
+        <servlet-name>ListVideogame</servlet-name>
+        <url-pattern>ListVideogame</url-pattern>
+    </servlet-mapping>
+
+	<servlet>
+		<servlet-name>VideogameDelete</servlet-name>
+		<servlet-class>es.salesianos.servlet.VideogameDelete</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>VideogameDelete</servlet-name>
+		<url-pattern>VideogameDelete</url-pattern>
+	</servlet-mapping>
   
 </web-app>

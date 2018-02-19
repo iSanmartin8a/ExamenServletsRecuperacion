@@ -1,10 +1,14 @@
 package services;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
-public interface Service{
+import javax.servlet.http.HttpServletRequest;
 	
-	void createNewConsoleFromRequest(HttpServletRequest req);
-	void createNewVideogameFromRequest(HttpServletRequest req);
+	public interface Service<Object> {
+		
+		public Object assembleObjectFromRequest(HttpServletRequest req);
+		public List<Object> listAll();
+		public void insert(Object formularyObject);
+		public void delete(Object formularyObject);
 
 }

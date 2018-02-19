@@ -10,33 +10,34 @@ import connections.H2Connection;
 import models.Console;
 import repositories.ConsolesRepository;
 
-public class ConsoleService implements Service{
-	
+public class ConsoleService {
+	ConsoleAssembler assembler = new ConsoleAssembler();
+	ConnectionManager manager = new H2Connection();
 	private ConsolesRepository repository = new ConsolesRepository();
-
-	public void createNewConsoleFromRequest(HttpServletRequest req) {
-		Console console = ConsoleAssembler.assembleConsoleFrom(req);
-		insertOrUpdate(console);
+	
+	public Console assembleUserFromRequest(HttpServletRequest req) {
+		return ConsoleAssembler.assembleConsoleFrom(req);
 	}
-
-	public void insertOrUpdate(Console consoleFrom) {
-		Console consoleInDatabase = repository.search(consoleFrom);
-		if (null == consoleInDatabase) {
-			repository.insert(consoleFrom);
+	public void createNewConsoleFromRequest(Console consoleForm) {
+		Console consoleInDatabase = repository.search(consoleForm);
+		if (consoleInDatabase== null) {
+			repository.insertConsole(consoleForm);
 		} else {
-			repository.update(consoleFrom);
+			repository.update(consoleForm);
 		}
 	}
-
-	public List<Console> listAllConsoles(){
+	public List<Console> listAllConsoles() {
 		return repository.searchAll();
-		
 	}
-	
+	public List<Console> listOrderByTitle() {
+		return repository.orderByTitle();
+	}
+	public void deleteConsole(Console console){
+		repository.delete(console);
+	}
 	public ConsolesRepository getRepository() {
 		return repository;
 	}
-
 	public void setRepository(ConsolesRepository repository) {
 		this.repository = repository;
 	}

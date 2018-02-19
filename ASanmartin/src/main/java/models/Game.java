@@ -31,5 +31,10 @@ public class Game {
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
+	
+	public void setReleaseDate2(String releaseDate2) {
+		Date.parse(releaseDate2);
+		this.releaseDate = releaseDate2;
+	}
 
 }

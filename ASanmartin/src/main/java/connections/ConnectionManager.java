@@ -1,19 +1,12 @@
 package connections;
 
-public class ConnectionManager extends AbstractConnection{
+import java.sql.Connection;
+
+public interface ConnectionManager {
+	public Connection open(String jdbcUrl);
 	
-	@Override
-	public String getDriver() {
-		return "org.h2.Driver";
-	}
+	public void close(Connection conn);
 
-	@Override
-	public String getDatabaseUser() {
-		return "sa";
-	}
-
-	@Override
-	public String getDatabasePassword() {
-		return "";
-	}
+	public Connection executeSql(Connection conn, String sql);
+	
 }

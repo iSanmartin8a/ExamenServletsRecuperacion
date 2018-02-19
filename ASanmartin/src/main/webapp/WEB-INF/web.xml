@@ -13,7 +13,7 @@
 
     <servlet-mapping>
         <servlet-name>CreateConsole</servlet-name>
-        <url-pattern>AddConsoles</url-pattern>
+        <url-pattern>CreateConsole</url-pattern>
     </servlet-mapping>
     <servlet>
     
@@ -37,32 +37,33 @@
 	</servlet-mapping>
 	
 	   <servlet>
-        <servlet-name>CreateVideogame</servlet-name>
-        <servlet-class>es.salesianos.servlet.CreateVideogame</servlet-class>
+        <servlet-name>CreateGame</servlet-name>
+        <servlet-class>es.salesianos.servlet.CreateGame</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>CreateVideogame</servlet-name>
-        <url-pattern>CreateVideogame</url-pattern>
+        <servlet-name>CreateGame</servlet-name>
+        <url-pattern>CreateGame</url-pattern>
     </servlet-mapping>
+    
     <servlet>
-        <servlet-name>ListVideogame</servlet-name>
-        <servlet-class>es.salesianos.servlet.ListVideogame</servlet-class>
+        <servlet-name>ListGame</servlet-name>
+        <servlet-class>es.salesianos.servlet.ListGame</servlet-class>
     </servlet>
 
 	<servlet-mapping>
-        <servlet-name>ListVideogame</servlet-name>
-        <url-pattern>ListVideogame</url-pattern>
+        <servlet-name>ListGame</servlet-name>
+        <url-pattern>ListGame</url-pattern>
     </servlet-mapping>
 
 	<servlet>
-		<servlet-name>VideogameDelete</servlet-name>
-		<servlet-class>es.salesianos.servlet.VideogameDelete</servlet-class>
+		<servlet-name>DeleteGame</servlet-name>
+		<servlet-class>es.salesianos.servlet.DeleteGame</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>VideogameDelete</servlet-name>
-		<url-pattern>VideogameDelete</url-pattern>
+		<servlet-name>DeleteGame</servlet-name>
+		<url-pattern>DeleteGame</url-pattern>
 	</servlet-mapping>
   
 </web-app>

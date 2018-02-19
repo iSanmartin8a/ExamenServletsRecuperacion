@@ -8,9 +8,9 @@
 	</head>
 	<body>
 		<form action="CreateVideogame" method="post">
-		<span>Name:</span>
+		<span>Title:</span>
 
-		<input type="text" name="name"> <br/>
+		<input type="text" name="title"> <br/>
 		<span>Recommended Age:</span>
 
 		<input type="text" name="recommendedAge"><br/>
